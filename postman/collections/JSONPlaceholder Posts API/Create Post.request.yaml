@@ -1,0 +1,44 @@
+$kind: http-request
+name: 'Create Post'
+method: POST
+url: '{{base_url}}/posts'
+order: 2000
+headers:
+  - key: Content-Type
+    value: application/json
+body:
+  type: json
+  content: |-
+    {
+      "title": "pytest REST API test",
+      "body": "Created by the API test framework.",
+      "userId": 1
+    }
+scripts:
+  - type: afterResponse
+    language: text/javascript
+    code: |-
+      pm.test("Status code is 201", function () {
+          pm.response.to.have.status(201);
+      });
+
+      pm.test("Response contains created post data", function () {
+          const created = pm.response.json();
+          pm.expect(created).to.have.property("id");
+          pm.expect(created).to.have.property("title");
+          pm.expect(created).to.have.property("body");
+          pm.expect(created).to.have.property("userId");
+      });
+
+      pm.test("Response reflects sent payload", function () {
+          const requestBody = JSON.parse(pm.request.body.raw);
+          const created = pm.response.json();
+          pm.expect(created.title).to.eql(requestBody.title);
+          pm.expect(created.body).to.eql(requestBody.body);
+          pm.expect(created.userId).to.eql(requestBody.userId);
+      });
+
+      pm.test("id is a number", function () {
+          const created = pm.response.json();
+          pm.expect(created.id).to.be.a("number");
+      });

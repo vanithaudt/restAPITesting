@@ -1,0 +1,10 @@
+$kind: collection
+name: JSONPlaceholder Posts API
+description: |-
+  Collection generated from the restAPITesting project.
+  Targets the JSONPlaceholder REST API (https://jsonplaceholder.typicode.com).
+  Covers the Posts resource endpoints exercised by the pytest test suite.
+variables:
+  - key: base_url
+    value: 'https://jsonplaceholder.typicode.com'
+    description: Base URL for the JSONPlaceholder API
