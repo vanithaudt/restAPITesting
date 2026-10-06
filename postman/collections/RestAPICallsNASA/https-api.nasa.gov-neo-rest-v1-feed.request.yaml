@@ -1,0 +1,14 @@
+$kind: http-request
+name: https://api.nasa.gov/neo/rest/v1/feed
+description: ""
+url: https://api.nasa.gov/neo/rest/v1/feed?start_date=2023-09-07&end_date=2023-09-08
+method: GET
+queryParams:
+  start_date: 2023-09-07
+  end_date: 2023-09-08
+auth:
+  type: apikey
+  credentials:
+    key: x-api-key
+    value: vvZRxTc13LCsA4wqw6IS7zlx5bwO86tlnijtuV6K
+order: 1791285805551

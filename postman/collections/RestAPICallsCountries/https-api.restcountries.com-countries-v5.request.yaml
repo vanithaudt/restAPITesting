@@ -1,0 +1,12 @@
+$kind: http-request
+name: https://api.restcountries.com/countries/v5
+description: ""
+url: https://api.restcountries.com/countries/v5?q=canada
+method: GET
+queryParams:
+  q: canada
+auth:
+  type: bearer
+  credentials:
+    token: rc_live_cb407a1d6157482395df1e71397efc9c
+order: 1791285911394
